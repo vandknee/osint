@@ -1,6 +1,7 @@
-username = input("Enter username: ")
-print("Investigation Report")
+from modules.username import check_github
 
-print ("hello vandknee")
-print ("smjhniara")
-print("hello")
+username = input("Enter username: ")
+
+result = check_github(username)
+
+print(f"GitHub account: {result}")
