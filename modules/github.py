@@ -15,10 +15,12 @@ def check_github(username):
             github_data["result"]="NOT FOUND"
         else:
             name = page.locator(".p-name").inner_text()
+            bio = page.locator(".p-note").inner_text()
             github_data["result"]="FOUND"
             github_data["name"]=name
+            github_data["bio"]=bio
             page.screenshot(path=f"screenshots/{username}.png")    
 
         browser.close()
 
-    return github_data
+    return github_data 
