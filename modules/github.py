@@ -8,11 +8,15 @@ def check_github(username):
         page = browser.new_page()
 
         page.goto(url)
+        page.pause()
+        name = page.locater(".p-name").inner_text()
+        print(name)
 
         if page.title() == "Page not found · GitHub · GitHub":
             result = "NOT FOUND"
         else:
             result = "FOUND"
+        page.screenshot(path=f"screenshots/{username}.png")    
 
         browser.close()
 
