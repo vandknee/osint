@@ -37,11 +37,13 @@ def check_github(username):
             else:
                        github_data["location"] = None
 
-            website = page.locator('a[rel~="nofollow"]')
-            if website.count() > 0:
-                   github_data["website"] = website.get_attribute("href")
-            else:
-                     github_data["website"] = None
+            
+            github_data["websites"] = []
+            websites = page.locator('a[rel~="nofollow"]')
+            for i in range(websites.count()):
+                github_data["websites"].append(
+                    websites.nth(i).get_attribute("href")
+            )
 
             github_data["profile_url"] = url    
      
@@ -51,10 +53,30 @@ def check_github(username):
                  github_data["Date Joined"] = page.locator("d-inline-block mb-2").inner_text()
             else:
                  github_data["Date Joined"] = None
-                 
+                
+            github_data["pinned_repos"] = []
+            pinned_heading = page.locator("h2", has_text="Pinned")
+            if pinned_heading.count() > 0:
+                # Find every repository name in the pinned section
+                repos = page.locator("span.repo")
+                for i in range(repos.count()):
+                    repo_name = repos.nth(i).inner_text()
+                    github_data["pinned_repos"].append(repo_name)
+            else:
+                github_data["pinned_repos"] = []
 
 
-
+            # Popular Repositories
+            github_data["popular_repos"] = []
+            # Look for an <h2> whose text is "Popular repositories"
+            popular_heading = page.locator("h2", has_text="Popular repositories")
+            if popular_heading.count() > 0:
+                repos = page.locator("span.repo")
+                for i in range(repos.count()):
+                    repo_name = repos.nth(i).inner_text()
+                    github_data["popular_repos"].append(repo_name)
+            else:
+                github_data["popular_repos"] = []
         browser.close()
 
     return github_data
