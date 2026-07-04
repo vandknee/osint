@@ -47,6 +47,14 @@ def check_github(username):
      
             page.screenshot(path=f"screenshots/{username}.png")
 
+            if page.locator("d-inline-block mb-2").is_visible():
+                 github_data["Date Joined"] = page.locator("d-inline-block mb-2").inner_text()
+            else:
+                 github_data["Date Joined"] = None
+                 
+
+
+
         browser.close()
 
     return github_data
