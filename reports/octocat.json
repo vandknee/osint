@@ -1,0 +1,24 @@
+{
+  "profile_exists": true,
+  "username": "octocat",
+  "display_name": "The Octocat",
+  "bio": null,
+  "company": "@github",
+  "location": "San Francisco",
+  "join_date": null,
+  "followers": "23.2k",
+  "following": "9",
+  "repositories": "8",
+  "avatar_url": "https://avatars.githubusercontent.com/u/583231?s=64&v=4",
+  "profile_url": "https://github.com/octocat",
+  "external_links": [
+    "https://github.blog",
+    "https://github.blog/changelog",
+    "https://avatars.githubusercontent.com/u/583231?v=4",
+    "https://www.githubstatus.com/"
+  ],
+  "organizations": [],
+  "repositories_list": [],
+  "screenshot_saved": true,
+  "reports_saved": false
+}
